@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+ {% form_theme editForm 'bootstrap_4_layout.html.twig' %}
+{% block title %}admin{% endblock %}
+
+{% block body %}
+<h1>modification projet</h1>
+
+ {{form_start(editForm)}}
+ {{form_widget(editForm)}}
+ 
+<button type="submit" class="btn btn-warning">modifier</button>
+ 
+  
+{{form_end(editForm)}}
+ {% endblock %}

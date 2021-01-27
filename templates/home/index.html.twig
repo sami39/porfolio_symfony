@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}portfolio{% endblock %}
+
+{% block body %}
+
+<style>
+    .articles {
+        border-radius: 10px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+        padding: 16px 20px;
+    }
+
+    img {
+        border-radius: 15px;
+        box-shadow: 0 5px 16px rgba(0, 0, 0, .25);
+
+    }
+</style>
+<h1>Bienvenue</h1>
+{% for projet in projets %}
+<section class="articles mt-5">
+    <article class="mb-5">
+    
+        <h2>{{ projet.titel }}</h2>
+        <img src="{{ projet.image }}" width="500px" alt="">
+
+        <div class="content mt-3">
+            <P>{{projet.description}}</P>
+            <div class="linkgit"><a href="{{ projet.github }}">github</a> </div>
+            <div class="linkweb"><a
+                    href="{{ projet.weblink }}">weblink</a> </div>
+
+        </div>
+    </article>
+
+
+</section>
+{% endfor %}   
+
+{% endblock %}

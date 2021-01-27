@@ -1,0 +1,32 @@
+ {% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block title %}admin{% endblock %}
+
+{% block body %}
+<h1>projet</h1>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button type="submit"class="btn btn-success">ajouter</button>
+ 
+{{ form_end(form) }}
+{% for projet in projets %}
+<section class="articles mt-5">
+    <article class="mb-5">
+    
+        <h2>{{ projet.titel }}</h2>
+        <img src="{{ projet.image }}" width="500px" alt="">
+
+        <div class="content mt-3">
+            <P>{{projet.description}}</P>
+            <div class="linkgit"><a href="{{ projet.github }}">github</a> </div>
+            <div class="linkweb"><a
+                    href="{{ projet.weblink }}">weblink</a> </div>
+
+        </div>
+        <a href="{{ path('projet_edit', {'id' : projet.id}) }}"class="btn btn-warning">modifier</a>
+         <a href=" {{ path('delete_projet', {'id' : projet.id}) }}  "class="btn btn-danger">suprimer</a>
+    </article>
+    {% endfor %} 
+
+
+ {% endblock %}
