@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
+  
     /**
      * @Route("/home", name="home")
      */
@@ -27,7 +28,7 @@ class HomeController extends AbstractController
     }
     
     /**
-     * @Route("home/administration", name="admin")
+     * @Route("profile/home/administration", name="admin")
      */
 public function new(Request $request,ProjetRepository $projetRepository){
   $projects= new Projet();
@@ -38,7 +39,7 @@ public function new(Request $request,ProjetRepository $projetRepository){
  $entityManager =$this->getDoctrine()->getManager();
  $entityManager->persist($projects);
  $entityManager->flush();
- return $this->redirectToRoute('projet_edit');
+ return $this->redirectToRoute('admin');
   }
   return $this->render('home/home.html.twig',[
     'form'=>$form->createView(),
@@ -49,7 +50,7 @@ public function new(Request $request,ProjetRepository $projetRepository){
 
 
 /**
-     * @Route("home/administration/edit/{id}", name="projet_edit")
+     * @Route("profile/home/administration/edit/{id}", name="projet_edit")
      */
      
      public function edit(Request $request, Projet $projects):Response{
@@ -76,7 +77,7 @@ public function new(Request $request,ProjetRepository $projetRepository){
      }
 
    /**
- * @Route("home/administration/delete/{id}", name="delete_projet")
+ * @Route("profile/home/administration/delete/{id}", name="delete_projet")
  */
 public function delete(Request $request, Projet $projects):Response{
    
@@ -88,15 +89,11 @@ public function delete(Request $request, Projet $projects):Response{
   
  $entityManager->remove($projects);
  $entityManager->flush();
- return $this->redirectToRoute('home');
+ return $this->redirectToRoute('admin');
  
 
   
   
 }
 
-
-
-
-  
 }
